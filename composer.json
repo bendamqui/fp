@@ -1,8 +1,8 @@
 {
-    "name": "bendamqui/php-package-template",
+    "name": "bendamqui/fp",
     "type": "library",
     "license": "MIT",
-    "description": "Boilerplate for PHP packages",
+    "description": "Functional programming utils.",
     "authors": [
         {
             "name": "Benoît Michaud",
@@ -17,9 +17,7 @@
         "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
-        "psr-4": {
-            "Package\\": "src/"
-        }
+        "files": ["src/Fp.php"]
     },
     "autoload-dev": {
         "psr-4": {

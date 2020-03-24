@@ -1,23 +1,29 @@
 # Installation
 
-* `copy .env.example to .env`
-* `docker-compose up --build -d`
-* `docker-compose exec php composer install`
-* `docker-compose exec php composer test`
+`composer require bendamqui/fp`
 
-# Debug with PhpStorm
+## Functions
 
-* Add a php cli interpreter in Preference > Languages & Frameworks > PHP. Choose the
-php version from the container.
+### pipe(\Closure ...$fns)(mixed $initialValue = null)
+Apply functions to initial value from left to right.
 
-* Set debug port to 9001 in Preference > Languages & Frameworks > PHP > Debug
+````php
+function add($x) {
+    return function($y) use ($x) {
+        return $x + $y;
+    };
+}
+pipe(add(1), add(2), add(3))(0); // => 6
+````
 
-* Create a server in Preference > Languages & Frameworks > PHP > Server.
-    * name: Has to be equal to the value of PHP_IDE_CONFIG in the .env file.
-    * host: localhost
-    * port: 80
-    * Set the path mapping.
+### compose(\Closure ...$fns)(mixed $initialValue = null)
+Apply functions to initial value from right to left.
 
-    
-
-
+````php
+function add($x) {
+    return function($y) use ($x) {
+        return $x + $y;
+    };
+}
+compose(add(1), add(2), add(3))(0); // => 6
+````
