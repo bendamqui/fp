@@ -13,7 +13,7 @@ function add($x) {
         return $x + $y;
     };
 }
-pipe(add(1), add(2), add(3))(0); // => 6
+pipe(add(1), add(2), add(4))(0); // => 7
 ````
 
 ### compose(\Closure ...$fns)(mixed $initialValue = null)
